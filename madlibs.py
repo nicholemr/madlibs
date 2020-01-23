@@ -72,7 +72,19 @@ def show_matlib():
     player_noun = request.args.get('noun')
     player_adj = request.args.get('adjective')
 
-    return render_template("madlib.html", person=player_name, color=player_color, noun=player_noun, adjective=player_adj)
+    monster_scales = request.args.get('scales')
+    monster_horns = request.args.get('horns')
+
+    if monster_scales == None:
+        monster_scales = "no scales"
+
+    if monster_horns == None:
+        monster_horns = "no horns"
+
+    matlibhtml = choice(["madlib.html","madlib2.html"])
+
+
+    return render_template(matlibhtml, person=player_name, color=player_color, noun=player_noun, adjective=player_adj, scales = monster_scales, horns=monster_horns)
 
 
 
